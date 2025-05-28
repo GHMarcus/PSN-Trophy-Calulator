@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "ios:device": "expo run:ios --device",
+    "lint": "eslint --cache \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:error": "yarn run lint --quiet",
+    "prebuild": "expo prebuild --clean",
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "tsc": "./node_modules/.bin/tsc --noEmit | ./node_modules/.bin/loose-ts-check"
   },
   "dependencies": {
     "expo": "~53.0.9",
@@ -16,7 +20,17 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@eslint/compat": "^1.2.9",
     "@types/react": "~19.0.10",
+    "eslint": "^9.27.0",
+    "eslint-config-expo": "^9.2.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-native": "^5.0.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "typescript": "~5.8.3"
   },
   "private": true
