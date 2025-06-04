@@ -1,9 +1,22 @@
+import { useTheme } from "@/src/constants/theme/ThemeContext";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
+
+function LayoutWithTheme() {
+    const { theme } = useTheme();
+
+    return (
+        <Stack
+            screenOptions={{ headerStyle: { backgroundColor: theme.colors.card }, headerTintColor: theme.colors.text }}
+        >
+            <Stack.Screen name="index" options={{ headerShown: false }} />
+        </Stack>
+    );
+}
 
 export default function RootLayout() {
     const [appIsReady, setAppIsReady] = useState(false);
@@ -29,9 +42,7 @@ export default function RootLayout() {
 
     return (
         <View onLayout={onLayoutRootView} style={styles.container}>
-            <Stack>
-                <Stack.Screen name="App" />
-            </Stack>
+            <LayoutWithTheme />
         </View>
     );
 }
